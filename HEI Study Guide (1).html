@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Human-Environment Interaction: Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f7f5;--card:#fff;--ink:#14282b;--mute:#52686b;--line:#d3e0dc;--brand:#0f4c4a;--brand-ink:#fff;--accent:#b8791b;--soft:#e2efeb;--good:#1f7a4d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a1b;--card:#15282a;--ink:#e6f0ee;--mute:#9bb3b0;--line:#27403f;--brand:#6cc3b5;--brand-ink:#0e1a1b;--accent:#e0a84a;--soft:#1c3635;--good:#5fd39a}}
+:root[data-theme="dark"]{--bg:#0e1a1b;--card:#15282a;--ink:#e6f0ee;--mute:#9bb3b0;--line:#27403f;--brand:#6cc3b5;--brand-ink:#0e1a1b;--accent:#e0a84a;--soft:#1c3635;--good:#5fd39a}
+html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Work Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;line-height:1.2;margin:0}
+header{background:var(--brand);color:var(--brand-ink);padding:40px 20px 32px}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+header .wrap{padding:0}
+h1{font-size:clamp(2rem,6vw,3rem);font-weight:700}
+header p{margin:10px 0 0;max-width:56ch;opacity:.88}
+.prog{margin-top:22px;display:flex;align-items:center;gap:12px;font-size:.9rem}
+.bar{flex:1;max-width:320px;height:8px;background:rgba(255,255,255,.25);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:4px;overflow-x:auto}
+nav a{padding:16px 14px;color:var(--mute);text-decoration:none;font-weight:500;font-size:.95rem;white-space:nowrap;border-bottom:3px solid transparent}
+nav a:hover,nav a:focus-visible{color:var(--ink);border-color:var(--accent);outline:none}
+section{padding:44px 0 8px}
+h2{font-size:1.9rem;color:var(--brand);margin-bottom:6px}
+.lead{color:var(--mute);margin:0 0 20px;max-width:62ch}
+.tools{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+input[type=search]{flex:1;min-width:180px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit}
+button,.btn{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:10px 14px;border-radius:8px}
+button:hover{border-color:var(--brand)}
+button[aria-pressed=true]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.term{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--brand);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.term.known{border-left-color:var(--good);background:var(--soft)}
+.term h3{font-size:1.2rem}
+.term .def{margin:0}
+.term .ex{margin:0;color:var(--mute);font-size:.9rem}
+.hide .term:not(.open) .def,.hide .term:not(.open) .ex{display:none}
+.hide .term:not(.open) h3::after{content:" (tap to reveal)";font:400 .75rem "Work Sans",sans-serif;color:var(--mute)}
+.hide .term{cursor:pointer}
+.term label{margin-top:auto;font-size:.85rem;color:var(--mute);display:flex;gap:8px;align-items:center;cursor:pointer}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px}
+.panel h3{font-size:1.25rem;margin-bottom:8px;color:var(--brand)}
+.panel ul{margin:0;padding-left:20px}
+.panel li{margin:4px 0}
+.cmp{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:8px;margin-top:14px}
+.cmp th,.cmp td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp th{background:var(--soft);color:var(--brand)}
+.scroll{overflow-x:auto}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin-bottom:10px}
+summary{padding:14px 18px;cursor:pointer;font-weight:600;list-style-position:inside}
+details .ans{padding:0 18px 16px;color:var(--ink)}
+details .ans p{margin:0 0 8px}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.checks label{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 14px;cursor:pointer}
+.checks input{margin-top:5px;accent-color:var(--brand);width:18px;height:18px}
+select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.opts{display:grid;gap:8px;margin:14px 0}
+.opts button{text-align:left;padding:12px 14px}
+.opts button.ok{background:var(--good);color:#fff;border-color:var(--good)}
+.opts button.bad{border-color:#c0392b;background:#c0392b33}
+.bar2{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar2 i{display:block;height:100%;width:100%;background:var(--accent);transition:width 1s linear}
+.meta{display:flex;justify-content:space-between;color:var(--mute);margin:0 0 8px}
+.qdef{font-size:1.2rem;font-family:Newsreader,Georgia,serif;margin:6px 0}
+.score{font-size:2.4rem;font-family:Newsreader,Georgia,serif;color:var(--brand);margin:0}
+#nx,.primary{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+footer{padding:40px 20px;text-align:center;color:var(--mute);font-size:.9rem}
+@media print{nav,.tools,.prog,footer{display:none}header{background:none;color:#000;padding:0}details{break-inside:avoid}details .ans{display:block}.hide .term .def,.hide .term .ex{display:block!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>Human-Environment Interaction</h1>
+<p>Global Studies quarter final study guide. Learn the vocabulary, compare the key ideas, then test yourself with the practice questions.</p>
+<div class="prog"><span id="pt">0 of 16 terms learned</span><div class="bar"><i id="pb"></i></div></div>
+</div></header>
+<nav aria-label="Sections"><div class="wrap">
+<a href="#vocab">Vocabulary</a><a href="#concepts">Key concepts</a><a href="#timed">Timed quiz</a><a href="#practice">Practice questions</a><a href="#tips">Test tips</a>
+</div></nav>
+
+<main class="wrap">
+<section id="vocab">
+<h2>Vocabulary</h2>
+<p class="lead">Turn on quiz mode to hide the definitions, try to recall each one, then tap the card to check. Tick "I know this" to track your progress.</p>
+<div class="tools">
+<input type="search" id="q" placeholder="Search terms" aria-label="Search terms">
+<button id="quiz" aria-pressed="false">Quiz mode</button>
+<button id="unk" aria-pressed="false">Show unlearned only</button>
+<button id="reset">Reset progress</button>
+</div>
+<div class="grid" id="terms"></div>
+</section>
+
+<section id="concepts">
+<h2>Key concepts</h2>
+<p class="lead">Humans and the environment affect each other in both directions.</p>
+<div class="scroll"><table class="cmp">
+<tr><th></th><th>Adaptation</th><th>Modification</th></tr>
+<tr><th>Meaning</th><td>People change their behavior to fit the environment.</td><td>People change the environment itself.</td></tr>
+<tr><th>Examples</th><td>Wearing coats in winter, irrigation, building shelters</td><td>Building dams, roads and cities; clearing land for farms</td></tr>
+<tr><th>Direction</th><td>Environment affects humans</td><td>Humans affect the environment</td></tr>
+</table></div>
+<p class="lead" style="margin-top:18px"><strong>Quick check:</strong> if the person adjusts, it is adaptation. If the landscape changes, it is modification.</p>
+
+<div class="two">
+<div class="panel"><h3>Humans changing the environment</h3>
+<ul><li><strong>Modification:</strong> cities, dams, roads, agriculture</li>
+<li><strong>Positive effects:</strong> better living conditions, more food</li>
+<li><strong>Negative effects:</strong> habitat loss, pollution, biodiversity loss</li></ul></div>
+<div class="panel"><h3>The environment affecting humans</h3>
+<ul><li><strong>Adaptation:</strong> appropriate clothing, irrigation, shelters</li>
+<li>People rely on the environment for water, food and energy</li></ul></div>
+<div class="panel"><h3>Sustainability</h3>
+<ul><li>Conserve forests, water and energy</li>
+<li><strong>Sustainable practices:</strong> crop rotation, recycling, planting trees</li></ul></div>
+<div class="panel"><h3>Desertification</h3>
+<ul><li><strong>Causes:</strong> overgrazing, deforestation, poor farming, climate change</li>
+<li><strong>Effects:</strong> soil degradation, less food, forced migration</li>
+<li><strong>Solutions:</strong> reforestation, sustainable farming, water management</li></ul></div>
+<div class="panel"><h3>Climate change and biodiversity</h3>
+<ul><li>Pollution and deforestation speed up climate change</li>
+<li>Climate change and habitat loss threaten biodiversity</li>
+<li>Conservation and sustainable practices protect ecosystems</li></ul></div>
+<div class="panel"><h3>Cause and effect chain</h3>
+<ul><li>Urbanization or farming leads to deforestation</li>
+<li>Deforestation leads to habitat loss and more carbon in the air</li>
+<li>Both lead to lower biodiversity and a changing climate</li></ul></div>
+</div>
+</section>
+
+<section id="timed">
+<h2>Timed quiz</h2>
+<p class="lead">Ten questions drawn at random from the vocabulary. Match each definition to its term before the clock runs out.</p>
+<div class="tools">
+<label for="secs" style="align-self:center">Time per question</label>
+<select id="secs"><option value="30">30 seconds</option><option value="20" selected>20 seconds</option><option value="10">10 seconds</option></select>
+<button id="start" class="primary">Start quiz</button>
+</div>
+<div class="panel" id="qz" hidden></div>
+</section>
+
+<section id="practice">
+<h2>Practice questions</h2>
+<p class="lead">Write your own answer first, then open the question to compare with a sample answer.</p>
+<div id="qs"></div>
+</section>
+
+<section id="tips">
+<h2>Test tips</h2>
+<p class="lead">Check these off as you prepare.</p>
+<ul class="checks" id="tipl"></ul>
+</section>
+</main>
+<footer>Human-Environment Interaction study guide</footer>
+
+<script>
+var T=[
+["Human-Environment Interaction (HEI)","How humans adapt to, modify, and are affected by their environment.","Building a city on a river and dealing with its floods."],
+["Adaptation","Changes humans make to fit into or adjust to their environment.","Wearing coats in winter."],
+["Modification","Changes humans make to the environment itself.","Building dams, roads or cities."],
+["Sustainability","Using resources in a way that ensures they last for future generations.","Replanting trees after harvesting wood."],
+["Ecosystem","A community of living organisms and their interactions with their environment.","A forest, a wetland or a coral reef."],
+["Urbanization","Growth of cities and increased population in urban areas.","Farmland becoming suburbs around a growing city."],
+["Deforestation","Cutting down forests for agriculture, development, or other human uses.","Clearing rainforest for cattle ranches."],
+["Pollution","Harmful substances introduced into air, water, or soil.","Factory smoke or fertilizer runoff."],
+["Conservation","Efforts to protect and preserve natural resources and habitats.","Creating national parks."],
+["Climate Change","Long-term changes in temperature and typical weather patterns, often caused by humans.","Rising global temperatures."],
+["Natural Disaster","Severe events like hurricanes, earthquakes, or floods that impact humans and the environment.","A hurricane flooding a coastal town."],
+["Biodiversity","Variety of life in an ecosystem; important for environmental stability.","A reef with hundreds of fish species."],
+["Habitat Loss","Destruction of natural habitats due to human activities.","Wetlands drained for construction."],
+["Sustainable Practices","Methods of using resources that do not deplete them for the future.","Crop rotation, recycling."],
+["Resource Management","Responsible supervision and use of resources to maintain sustainability.","Limits on fishing or water use."],
+["Desertification","The process where fertile land becomes desert, often due to overuse or climate changes.","Overgrazed grassland turning to dust."]
+];
+var Q=[
+["Give an example of adaptation and an example of modification.","<p><strong>Adaptation:</strong> wearing warm coats in winter, or using irrigation in a dry region, because people adjust to the environment.</p><p><strong>Modification:</strong> building a dam on a river, because people change the environment itself.</p>"],
+["Explain how deforestation can impact climate change and biodiversity.","<p><strong>Climate change:</strong> fewer trees means less carbon absorbed, so human activity speeds up climate change.</p><p><strong>Biodiversity:</strong> clearing forests destroys habitats, so species lose their homes and variety of life drops.</p>"],
+["List three sustainable practices humans can use to protect resources.","<p>Crop rotation, recycling, and planting trees. Others that fit: conserving water and energy, and managing resources responsibly.</p>"],
+["How does urbanization affect ecosystems?","<p>Growing cities replace natural land with buildings and roads, causing habitat loss and pollution. That threatens biodiversity and can disrupt how an ecosystem functions.</p>"],
+["Identify one cause and one solution for desertification.","<p><strong>Cause:</strong> overgrazing (others: deforestation, poor farming, climate change).</p><p><strong>Solution:</strong> reforestation (others: sustainable farming, water management).</p>"],
+["Describe a natural disaster and its effects on humans and the environment.","<p>Example: a hurricane. <strong>Humans:</strong> damaged homes, displaced families, lost crops and income. <strong>Environment:</strong> flooding, erosion and damaged habitats. You can use any disaster from class, such as an earthquake or flood.</p>"]
+];
+var TIPS=["Review the vocabulary definitions and examples","Tell adaptations apart from modifications","Explain cause and effect in both directions: how humans affect the environment and how it affects them","Know examples of natural disasters, pollution and sustainable practices","Be ready for desertification questions: causes, effects and solutions","Practice using vocabulary in context, such as \"How does urbanization impact biodiversity?\""];
+var KEY="hei-known",known={};
+function load(){try{known=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){known={}}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(known))}catch(e){}}
+function $(i){return document.getElementById(i)}
+var quiz=false,unk=false;
+function render(){
+  var q=$("q").value.toLowerCase(),h="",n=0;
+  T.forEach(function(t,i){
+    if(known[i])n++;
+    if(unk&&known[i])return;
+    if(q&&(t[0]+t[1]).toLowerCase().indexOf(q)<0)return;
+    h+='<div class="term'+(known[i]?' known':'')+'" data-i="'+i+'"><h3>'+t[0]+'</h3><p class="def">'+t[1]+'</p><p class="ex">Example: '+t[2]+'</p><label><input type="checkbox"'+(known[i]?' checked':'')+' data-k="'+i+'"> I know this</label></div>';
+  });
+  $("terms").innerHTML=h||'<p class="lead">No terms match. Clear the search or turn off the filter.</p>';
+  $("terms").className="grid"+(quiz?" hide":"");
+  $("pt").textContent=n+" of "+T.length+" terms learned";
+  $("pb").style.width=(n/T.length*100)+"%";
+}
+$("terms").addEventListener("click",function(e){
+  var k=e.target.getAttribute&&e.target.getAttribute("data-k");
+  if(k!==null&&k!==undefined){known[k]=e.target.checked?1:0;save();var open=quiz;render();return}
+  var c=e.target.closest(".term");
+  if(c&&quiz&&e.target.tagName!=="INPUT"&&e.target.tagName!=="LABEL")c.classList.toggle("open");
+});
+$("q").addEventListener("input",render);
+$("quiz").onclick=function(){quiz=!quiz;this.setAttribute("aria-pressed",quiz);render()};
+$("unk").onclick=function(){unk=!unk;this.setAttribute("aria-pressed",unk);render()};
+$("reset").onclick=function(){known={};save();render()};
+$("qs").innerHTML=Q.map(function(x,i){return '<details><summary>'+(i+1)+'. '+x[0]+'</summary><div class="ans">'+x[1]+'</div></details>'}).join("");
+var tk={};try{tk=JSON.parse(localStorage.getItem("hei-tips")||"{}")}catch(e){}
+$("tipl").innerHTML=TIPS.map(function(t,i){return '<li><label><input type="checkbox" data-t="'+i+'"'+(tk[i]?' checked':'')+'><span>'+t+'</span></label></li>'}).join("");
+$("tipl").addEventListener("change",function(e){tk[e.target.getAttribute("data-t")]=e.target.checked?1:0;try{localStorage.setItem("hei-tips",JSON.stringify(tk))}catch(x){}});
+var qz={};
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t}return a}
+function ids(){return T.map(function(_,i){return i})}
+function startQuiz(){
+  qz={order:shuffle(ids()).slice(0,10),i:0,score:0,missed:[],secs:+$("secs").value,left:0,timer:null,locked:false,cur:0};
+  $("qz").hidden=false;$("start").textContent="Restart quiz";nextQ();
+}
+function tick(){$("tl").textContent=qz.left+" seconds left";$("tb").style.width=(qz.left/qz.secs*100)+"%"}
+function nextQ(){
+  clearInterval(qz.timer);
+  if(qz.i>=qz.order.length)return finish();
+  var idx=qz.order[qz.i];qz.cur=idx;qz.locked=false;
+  var opts=shuffle([idx].concat(shuffle(ids().filter(function(i){return i!==idx})).slice(0,3)));
+  $("qz").innerHTML='<p class="meta"><span>Question '+(qz.i+1)+' of '+qz.order.length+'</span><span>Score: '+qz.score+'</span></p><div class="bar2"><i id="tb"></i></div><p class="meta" id="tl"></p><p class="qdef">'+T[idx][1]+'</p><div class="opts">'+opts.map(function(o){return '<button data-o="'+o+'">'+T[o][0]+'</button>'}).join("")+'</div><p id="fb" role="status"></p>';
+  qz.left=qz.secs;tick();
+  qz.timer=setInterval(function(){qz.left--;tick();if(qz.left<=0)answer(-1)},1000);
+}
+function answer(o){
+  if(qz.locked)return;qz.locked=true;clearInterval(qz.timer);
+  var ok=o===qz.cur;if(ok)qz.score++;else qz.missed.push(qz.cur);
+  Array.prototype.forEach.call($("qz").querySelectorAll("[data-o]"),function(b){
+    var v=+b.getAttribute("data-o");b.disabled=true;
+    if(v===qz.cur)b.classList.add("ok");else if(v===o)b.classList.add("bad");
+  });
+  $("fb").textContent=(ok?"Correct. ":(o<0?"Time is up. ":"Not quite. "))+"The answer is "+T[qz.cur][0]+".";
+  var last=qz.i>=qz.order.length-1;
+  $("qz").insertAdjacentHTML("beforeend",'<button id="nx">'+(last?"See results":"Next question")+'</button>');
+  $("nx").focus();
+}
+function finish(){
+  var n=qz.order.length,m=qz.missed;
+  $("qz").innerHTML='<p class="score">'+qz.score+' / '+n+'</p><p class="lead">'+(m.length===0?"Perfect score. You are ready for this section.":"Review the terms you missed, then try again.")+'</p>'+
+  (m.length?'<h3>Terms to review</h3><ul>'+m.map(function(i){return '<li><strong>'+T[i][0]+':</strong> '+T[i][1]+'</li>'}).join("")+'</ul>':'')+
+  '<div class="tools" style="margin-top:16px"><button id="again" class="primary">Try again</button></div>';
+  $("again").focus();
+}
+$("start").onclick=startQuiz;
+$("qz").addEventListener("click",function(e){
+  var b=e.target.closest("[data-o]");
+  if(b&&!b.disabled)return answer(+b.getAttribute("data-o"));
+  if(e.target.id==="nx"){qz.i++;nextQ()}
+  if(e.target.id==="again")startQuiz();
+});
+load();render();
+</script>
+</body>
+</html>
